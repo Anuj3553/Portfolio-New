@@ -72,7 +72,7 @@ export const StickyNav = ({
   });
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence>
       <motion.div
         // initial={{
         //   opacity: 1,

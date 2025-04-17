@@ -1,6 +1,6 @@
 import { Home, User, MessageSquare, Settings } from "lucide-react";
-import { StickyNav } from "../ui/sticky-navbar";
-import logo from "../../../public/images/common/logo.png";
+import { StickyNav } from "../../ui/sticky-navbar";
+import logo from "../../../../public/images/common/logo.png";
 
 export default function App() {
     const navItems = [

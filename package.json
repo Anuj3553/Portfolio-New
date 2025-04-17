@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@barba/core": "^2.10.3",
     "@gsap/react": "^2.1.2",
     "@radix-ui/react-slot": "^1.2.0",
     "@tsparticles/all": "^3.8.1",
@@ -17,6 +18,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "^12.7.4",
     "gsap": "^3.12.7",
+    "lenis": "^1.2.3",
     "lucide-react": "^0.488.0",
     "next": "15.2.4",
     "react": "^19.1.0",

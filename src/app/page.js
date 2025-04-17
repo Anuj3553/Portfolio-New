@@ -1,7 +1,7 @@
 "use client"
 
 import ParticlesComponent from '@/components/particles';
-import Navbar from '@/components/user/Navbar';
+import Navbar from '@/components/user/common/Navbar';
 
 function App() {
   return (
