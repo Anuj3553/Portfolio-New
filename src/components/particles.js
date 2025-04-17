@@ -19,6 +19,10 @@ const ParticlesComponent = (props) => {
 
     const options = useMemo(
         () => ({
+            fullScreen: {
+                enable: false, // Disable full screen mode
+                zIndex: -1    // Set z-index to place it behind other content
+            },
             particles: {
                 number: {
                     value: 150,
@@ -133,7 +137,11 @@ const ParticlesComponent = (props) => {
     );
 
     if (init) {
-        return <Particles id={props.id} init={particlesLoaded} options={options} />;
+        return (
+            <div>
+                <Particles className="h-[100vh] w-full" id={props.id} init={particlesLoaded} options={options} />
+            </div>
+        );
     }
 
     return <></>;
