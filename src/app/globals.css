@@ -31,6 +31,27 @@ button {
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Pacifico";
+  src: url("/fonts/Pacifico/Pacifico.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Rooster";
+  src: url("/fonts/Rooster/Rooster.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "modernline";
+  src: url("/fonts/modernline/modernline.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

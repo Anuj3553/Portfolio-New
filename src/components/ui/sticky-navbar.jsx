@@ -14,7 +14,7 @@ import { useRouter } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 export const StickyNav = ({
-  logo,
+  avatar,
   name,
   navItems,
   mainItem,
@@ -101,9 +101,9 @@ export const StickyNav = ({
         >
           <div className="relative h-10 w-10 cursor-pointer rounded-full overflow-hidden border border-white/20">
             <Image
-              src={logo}
+              src={avatar}
               fill
-              alt="logo"
+              alt="avatar"
               className="object-contain"
             />
           </div>

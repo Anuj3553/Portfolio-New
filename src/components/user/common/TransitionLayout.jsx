@@ -7,88 +7,68 @@ import gsap from "gsap";
 export default function TransitionLayout({ children }) {
     const pathname = usePathname();
     const containerRef = useRef(null);
-    const animationRef = useRef(null);
+    const overlayRef = useRef(null);
 
     useEffect(() => {
-        if (!containerRef.current) return;
+        if (!overlayRef.current) return;
 
-        // Kill any existing animation
-        if (animationRef.current) {
-            animationRef.current.kill();
+        const numStrips = 5;
+        const strips = [];
+
+        // Clear any previous strips
+        overlayRef.current.innerHTML = "";
+
+        // Create vertical strips
+        for (let i = 0; i < numStrips; i++) {
+            const strip = document.createElement("div");
+            strip.className = "absolute top-0 h-full bg-white z-50";
+            strip.style.width = `${100 / numStrips}%`;
+            strip.style.left = `${(100 / numStrips) * i}%`;
+            strip.style.transform = "scaleY(0)";
+            overlayRef.current.appendChild(strip);
+            strips.push(strip);
         }
 
-        // Create timeline for complex sequencing
-        const tl = gsap.timeline({
-            defaults: { ease: "power3.inOut" },
-            onComplete: () => animationRef.current = null
+        // Timeline animation
+        const tl = gsap.timeline();
+
+        // Animate strips in (cover screen)
+        tl.to(strips, {
+            scaleY: 1,
+            transformOrigin: "bottom center",
+            stagger: 0.1,
+            duration: 0.2,
+            ease: "power3.inOut",
         });
 
-        // Store the timeline reference
-        animationRef.current = tl;
+        // Animate strips out (reveal screen)
+        tl.to(strips, {
+            scaleY: 0,
+            transformOrigin: "top center",
+            stagger: 0.1,
+            duration: 0.2,
+            ease: "power3.inOut",
+        });
 
-        // Morphing blob effect
-        tl.fromTo(containerRef.current,
-            {
-                clipPath: "circle(0% at 50% 50%)",
-                opacity: 0,
-                y: 40,
-                scale: 0.95,
-                rotation: 2,
-                skewX: 5
-            },
-            {
-                clipPath: "circle(100% at 50% 50%)",
-                opacity: 1,
-                y: 0,
-                scale: 1,
-                rotation: 0,
-                skewX: 0,
-                duration: 1.2,
-                ease: "elastic.out(1, 0.5)"
-            }
-        );
-
-        // Add floating particles effect
-        const particles = [];
-        for (let i = 0; i < 15; i++) {
-            const particle = document.createElement("div");
-            particle.className = "absolute w-2 h-2 rounded-full bg-white opacity-70";
-            containerRef.current.appendChild(particle);
-            particles.push(particle);
-
-            gsap.set(particle, {
-                x: gsap.utils.random(-50, 50),
-                y: gsap.utils.random(-50, 50),
-                scale: gsap.utils.random(0.5, 1.5)
-            });
-
-            tl.to(particle, {
-                x: gsap.utils.random(-100, 100),
-                y: gsap.utils.random(-100, 100),
-                opacity: 0,
-                duration: 1,
-                ease: "power1.out"
-            }, 0);
-        }
-
-        // Cleanup function
+        // Cleanup
         return () => {
             tl.kill();
-            particles.forEach(p => p.remove());
+            strips.forEach(strip => strip.remove());
         };
-
     }, [pathname]);
 
     return (
-        <div
-            ref={containerRef}
-            className="relative overflow-hidden"
-            style={{
-                willChange: "transform, opacity, clip-path",
-                transformOrigin: "center center"
-            }}
-        >
-            {children}
+        <div className="relative overflow-hidden">
+            <div
+                ref={overlayRef}
+                className="pointer-events-none absolute inset-0 z-50"
+            />
+            <div
+                ref={containerRef}
+                className="relative z-10"
+            >
+                {children}
+            </div>
         </div>
     );
 }
