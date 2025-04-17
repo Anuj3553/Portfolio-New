@@ -1,9 +1,13 @@
 "use client"
+
 import ParticlesComponent from '@/components/particles';
+import Navbar from '@/components/user/Navbar';
 
 function App() {
   return (
     <div>
+      <Navbar />
+
       <ParticlesComponent />
 
       <div className='absolute top-0 left-0 w-full h-full flex items-center justify-center'>
