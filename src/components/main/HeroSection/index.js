@@ -175,32 +175,6 @@ export default function HeroSection() {
                     <FaInstagram className="text-2xl md:text-3xl transition-transform text-white hover:text-pink-400" />
                 </motion.a>
             </motion.div>
-
-            {/* Subtle floating particles */}
-            <motion.div
-                className="absolute inset-0 overflow-hidden pointer-events-none"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1, duration: 1 }}
-            >
-                {[...Array(20)].map((_, i) => (
-                    <motion.div
-                        key={i}
-                        className="absolute rounded-full bg-white/10"
-                        animate={{
-                            x: [0, gsap.utils.random(-50, 50)],
-                            y: [0, gsap.utils.random(-50, 50)],
-                            opacity: [0.2, 0.8, 0.2],
-                        }}
-                        transition={{
-                            duration: gsap.utils.random(5, 10),
-                            repeat: Infinity,
-                            repeatType: "reverse",
-                            ease: "easeInOut",
-                        }}
-                    />
-                ))}
-            </motion.div>
         </motion.div>
     );
 }

@@ -6,10 +6,15 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { IconCloudSec } from "../common/IconCloudSec";
+import { HyperText } from "@/components/ui/hyper-text";
+import { MagneticButton } from "@/components/ui/magnetic-button";
+import PDFModal from "../common/PDFModal";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Index = React.forwardRef(({ className, ...props }, ref) => {
+    const [isModalOpen, setIsModalOpen] = React.useState(false);
+
     const sectionRef = React.useRef(null);
     const contentRef = React.useRef(null);
 
@@ -90,7 +95,7 @@ const Index = React.forwardRef(({ className, ...props }, ref) => {
             <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-20">
                 {/* Left Content */}
                 <div ref={contentRef} className="text-center lg:text-left space-y-6 flex-1">
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">About Me</h1>
+                    <HyperText className="text-4xl sm:text-5xl md:text-6xl font-bold" text="About Me" />
                     <p className="text-lg md:text-xl text-white/80 leading-relaxed max-w-3xl mx-auto lg:mx-0">
                         Hi there! I’m <strong>Anuj Verma</strong>, a full-stack software developer who loves crafting fast, scalable, and beautiful web experiences.
                     </p>
@@ -100,22 +105,27 @@ const Index = React.forwardRef(({ className, ...props }, ref) => {
                     <p className="text-base text-white/70 leading-relaxed">Curious about my work or just want to chat?</p>
 
                     <div className="flex flex-wrap justify-center lg:justify-start gap-6 pt-6">
-                        <motion.a
-                            href="mailto:anujverma3553@gmail.com"
-                            className="px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            Let&apos;s Connect
-                        </motion.a>
-                        <motion.a
-                            href="/blogs"
-                            className="px-6 py-3 rounded-full border border-white/20 text-white font-medium hover:bg-white/10 transition-all duration-300"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            Read My Blog
-                        </motion.a>
+                        <MagneticButton>
+                            <motion.a
+                                onClick={() => setIsModalOpen(true)}
+                                className="px-6 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-medium shadow-md hover:shadow-blue-500/30 transition-all duration-300"
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                View Resume
+                            </motion.a>
+                        </MagneticButton>
+
+                        <MagneticButton>
+                            <motion.a
+                                href="#contact"
+                                className="px-6 py-3 rounded-full border border-white/20 text-white font-medium hover:bg-white/10 transition-all duration-300"
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                Let&apos;s Connect
+                            </motion.a>
+                        </MagneticButton>
                     </div>
                 </div>
 
@@ -129,6 +139,11 @@ const Index = React.forwardRef(({ className, ...props }, ref) => {
                     <IconCloudSec />
                 </motion.div>
             </div>
+            <PDFModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                file="/docs/Resume.pdf"
+            />
         </div>
     );
 });
