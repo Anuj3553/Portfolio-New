@@ -65,7 +65,7 @@ const ParticlesComponent = (props) => {
     }), []);
 
     return (
-        <div>
+        <div id="home">
             {init && (
                 <Particles
                     id={props.id || "tsparticles"}

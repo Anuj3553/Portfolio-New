@@ -71,6 +71,7 @@ const Index = React.forwardRef(({ className, ...props }, ref) => {
 
     return (
         <div
+            id="about"
             ref={sectionRef}
             className={cn(
                 "relative z-10 flex min-h-[100vh] w-full flex-col justify-center overflow-hidden bg-black text-white px-6 py-20",

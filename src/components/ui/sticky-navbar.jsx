@@ -135,6 +135,12 @@ export const StickyNav = ({
           {navItems.map((navItem, idx) => (
             <Link
               key={`${navItem.id}-${idx}`}
+              onClick={() => {
+                const el = document.getElementById(navItem.id);
+                if (el) {
+                  el.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+              }}
               href={navItem.link}
               className={cn(
                 "relative text-white/90 hover:text-white",
@@ -192,6 +198,13 @@ export const StickyNav = ({
             {navItems.map((navItem, idx) => (
               <motion.div
                 key={`${navItem.id}-${idx}`}
+                onClick={() => {
+                  const el = document.getElementById(navItem.id);
+                  if (el) {
+                    el.scrollIntoView({ behavior: "smooth", block: "start" });
+                    setMobileMenuOpen(false);
+                  }
+                }}
                 initial={{ x: -20 }}
                 animate={{ x: 0 }}
                 transition={{ delay: 0.1 + idx * 0.05 }}
