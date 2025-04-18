@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/user/common/SmoothScroll";
-import TransitionLayout from "@/components/user/common/TransitionLayout";
+// import TransitionLayout from "@/components/user/common/TransitionLayout";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,9 +27,9 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <SmoothScroll />
-        <TransitionLayout>
+        {/* <TransitionLayout> */}
           {children}
-        </TransitionLayout>
+        {/* </TransitionLayout> */}
       </body>
     </html>
   );

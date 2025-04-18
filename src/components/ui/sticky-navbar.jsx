@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import AnimatedHamburger from "../user/common/AnimatedHamburger";
 
 export const StickyNav = ({
   avatar,
@@ -28,9 +28,12 @@ export const StickyNav = ({
   const [visible, setVisible] = useState(false);
   const [isShaking, setIsShaking] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
+  const toggleMenu = () => {
+    setMobileMenuOpen((prev) => !prev);
+  };
 
   const handleMouseEnter = () => {
     setIsShaking(true);
@@ -74,6 +77,7 @@ export const StickyNav = ({
   return (
     <AnimatePresence>
       <motion.div
+        // For floating navbar
         // initial={{
         //   opacity: 1,
         //   y: -100,
@@ -85,6 +89,11 @@ export const StickyNav = ({
         // transition={{
         //   duration: 0.2,
         // }}
+
+        // For sticky navbar
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
         className={cn(
           "flex w-full max-w-3xl fixed top-6 inset-x-0 mx-auto",
           "border border-white/20 rounded-full",
@@ -116,7 +125,7 @@ export const StickyNav = ({
         <div className="hidden md:flex items-center space-x-6">
           {navItems.map((navItem, idx) => (
             <Link
-              key={`desktop-${navItem.name}-${idx}`}
+              key={`${navItem.id}-${idx}`}
               href={navItem.link}
               className={cn(
                 "relative text-white/90 hover:text-white",
@@ -150,70 +159,60 @@ export const StickyNav = ({
             className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" />
         </motion.button>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={toggleMobileMenu}
-          className="md:hidden text-white focus:outline-none"
-          aria-label="Toggle menu"
-        >
-          {mobileMenuOpen ? (
-            <X size={24} className="text-white" />
-          ) : (
-            <Menu size={24} className="text-white" />
-          )}
-        </button>
-
+        {/* Mobile Hamburger Button */}
+        <AnimatedHamburger
+          isOpen={mobileMenuOpen}
+          toggleMenu={toggleMenu}
+        />
       </motion.div>
 
       {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
+      {mobileMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.3 }}
+          className="fixed inset-0 bg-black/90 backdrop-blur-lg z-[4999] pt-35 px-6 md:hidden"
+        >
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-black/90 backdrop-blur-lg z-[4999] pt-24 px-6 md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="flex flex-col items-center space-y-8"
           >
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.1 }}
-              className="flex flex-col items-center space-y-8"
-            >
-              {navItems.map((navItem, idx) => (
-                <motion.div
-                  key={`mobile-${navItem.name}-${idx}`}
-                  initial={{ x: -20 }}
-                  animate={{ x: 0 }}
-                  transition={{ delay: 0.1 + idx * 0.05 }}
-                >
-                  <Link
-                    href={navItem.link}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="text-2xl font-medium text-white hover:text-blue-400 transition-colors"
-                  >
-                    {navItem.name}
-                  </Link>
-                </motion.div>
-              ))}
-
-              <motion.button
-                initial={{ scale: 0.9 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.1 + navItems.length * 0.05 }}
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  router.push(mainItemLink);
-                }}
-                className="mt-8 border-2 border-white text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-white hover:text-black transition-all duration-300"
+            {navItems.map((navItem, idx) => (
+              <motion.div
+                key={`${navItem.id}-${idx}`}
+                initial={{ x: -20 }}
+                animate={{ x: 0 }}
+                transition={{ delay: 0.1 + idx * 0.05 }}
               >
-                {mainItem}
-              </motion.button>
-            </motion.div>
+                <Link
+                  href={navItem.link}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-2xl font-medium text-white hover:text-blue-400 transition-colors"
+                >
+                  {navItem.name}
+                </Link>
+              </motion.div>
+            ))}
+
+            <motion.button
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.1 + navItems.length * 0.05 }}
+              onClick={() => {
+                setMobileMenuOpen(false);
+                router.push(mainItemLink);
+              }}
+              className="mt-8 border-2 border-white text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-white hover:text-black transition-all duration-300"
+            >
+              {mainItem}
+            </motion.button>
           </motion.div>
-        )}
-      </AnimatePresence>
+        </motion.div>
+      )}
     </AnimatePresence>
   );
 };

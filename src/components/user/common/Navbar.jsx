@@ -4,12 +4,12 @@ import avatar from "../../../../public/images/common/avatar.jpg";
 
 export default function App() {
     const navItems = [
-        { name: "Home", link: "/", icon: <Home className="h-4 w-4" /> },
-        { name: "About", link: "/about", icon: <User className="h-4 w-4" /> },
-        { name: "Works", link: "/contact", icon: <MessageSquare className="h-4 w-4" /> },
-        { name: "Services", link: "/services", icon: <Settings className="h-4 w-4" /> },
-        { name: "Portfolio", link: "/portfolio", icon: <Settings className="h-4 w-4" /> },
-        { name: "Blogs", link: "/blogs", icon: <Settings className="h-4 w-4" /> },
+        { key: 1, name: "Home", link: "/" },
+        { key: 2, name: "About", link: "/about" },
+        { key: 3, name: "Works", link: "/contact" },
+        { key: 4, name: "Services", link: "/services" },
+        { key: 5, name: "Portfolio", link: "/portfolio" },
+        { key: 6, name: "Blogs", link: "/blogs" },
     ];
 
     return (
