@@ -144,7 +144,7 @@ export default function HeroSection() {
                     whileHover={{ y: -5, scale: 1.2 }}
                     whileTap={{ scale: 0.9 }}
                 >
-                    <FaGithub className="text-2xl md:text-3xl transition-transform text-white hover:text-violet-500" />
+                    <FaGithub className="text-2xl md:text-3xl transition-transform text-white hover:text-violet-400" />
                 </motion.a>
                 <motion.a
                     href={socialLinks.linkedin}
@@ -152,7 +152,7 @@ export default function HeroSection() {
                     whileHover={{ y: -5, scale: 1.2 }}
                     whileTap={{ scale: 0.9 }}
                 >
-                    <FaLinkedin className="text-2xl md:text-3xl transition-transform text-white hover:text-blue-500" />
+                    <FaLinkedin className="text-2xl md:text-3xl transition-transform text-white hover:text-blue-400" />
                 </motion.a>
                 <motion.a
                     href={socialLinks.instagram}
@@ -160,7 +160,7 @@ export default function HeroSection() {
                     whileHover={{ y: -5, scale: 1.2 }}
                     whileTap={{ scale: 0.9 }}
                 >
-                    <FaInstagram className="text-2xl md:text-3xl transition-transform text-white hover:text-pink-500" />
+                    <FaInstagram className="text-2xl md:text-3xl transition-transform text-white hover:text-pink-400" />
                 </motion.a>
             </motion.div>
 
