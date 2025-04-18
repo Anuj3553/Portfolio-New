@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import SmoothScroll from "@/components/user/common/SmoothScroll";
+import SmoothScroll from "@/components/main/common/SmoothScroll";
+import { Globe } from "@/components/magicui/globe";
 // import TransitionLayout from "@/components/user/common/TransitionLayout";
 
 const geistSans = Geist({
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Globe />
         <SmoothScroll />
         {/* <TransitionLayout> */}
           {children}

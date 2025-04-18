@@ -1,0 +1,7 @@
+.cursor-logo {
+  cursor: url("/images/cursor/other/logo.svg"), auto !important;
+}
+
+.cursor-main {
+  cursor: url("/images/cursor/dark/hand.png"), auto !important;
+}

@@ -3,12 +3,12 @@
 
 html,
 body {
-  cursor: url("/images/cursor/arrow.png"), auto;
+  cursor: url("/images/cursor/light/arrow.png"), auto;
 }
 
 a,
 button {
-  cursor: url("/images/cursor/hand.png"), pointer;
+  cursor: url("/images/cursor/light/hand.png"), auto;
 }
 
 @layer utilities {
@@ -22,6 +22,16 @@ button {
     scrollbar-width: none; /* Firefox */
   }
 }
+
+/* @theme {
+  --animate-border-beam: border-beam calc(var(--duration) * 1s) infinite linear;
+  
+  @keyframes border-beam {
+    100% {
+      offset-distance: 100%;
+    }
+  }
+} */
 
 /* Fonts */
 @font-face {

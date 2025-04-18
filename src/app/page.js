@@ -1,8 +1,8 @@
 "use client";
 
 import ParticlesComponent from "@/components/particles";
-import Navbar from "@/components/user/common/Navbar";
-import HeroSection from "@/components/user/HeroSection";
+import Navbar from "@/components/main/common/Navbar";
+import HeroSection from "@/components/main/HeroSection";
 
 function App() {
   return (

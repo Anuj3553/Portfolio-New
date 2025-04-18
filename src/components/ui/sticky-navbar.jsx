@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import "@/styles/Home.css"
 import {
   motion,
   AnimatePresence,
@@ -11,7 +12,8 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import AnimatedHamburger from "../user/common/AnimatedHamburger";
+import AnimatedHamburger from "../main/common/AnimatedHamburger";
+import { BorderBeam } from "./border-beam";
 
 export const StickyNav = ({
   avatar,
@@ -91,10 +93,12 @@ export const StickyNav = ({
         // }}
 
         // For sticky navbar
+
+        // For sticky navbar
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        onClick={()=> router.push("/")}
+        onClick={() => router.push("/")}
         className={cn(
           "flex w-full max-w-3xl fixed top-6 inset-x-0 mx-auto",
           "border border-white/20 rounded-full",
@@ -102,12 +106,16 @@ export const StickyNav = ({
           "shadow-lg shadow-black/30",
           "px-6 py-3 items-center justify-between",
           "z-[5000]",
+          "drop-shadow-[0_0.1px_0.2px_rgba(255,255,255,0.4)]",
           className
         )}>
+        {/* Border Beam */}
+        <BorderBeam duration={8} size={100} />
+
         {/* Logo and Name */}
         <motion.div
           whileHover={{ scale: 1.03 }}
-          className="flex items-center space-x-3"
+          className="flex items-center space-x-3 cursor-logo"
         >
           <div className="relative h-10 w-10 rounded-full overflow-hidden border border-white/20">
             <Image
@@ -154,10 +162,9 @@ export const StickyNav = ({
           onMouseLeave={handleMouseLeave}
           onClick={() => router.push(mainItemLink)}
           transition={{ duration: 0.5 }}
-          className="border hidden md:flex text-sm font-medium relative border-white dark:border-white/[0.2] text-white dark:text-white px-4 py-2 rounded-full hover:cursor-pointer hover:bg-white hover:bg-opacity-10 transition-colors duration-200 hover:text-black">
+          className="border cursor-main hidden md:flex text-sm font-medium relative border-white dark:border-white/[0.2] hover:drop-shadow-[0_2px_1px_rgba(255,255,255,0.4)] text-white dark:text-white px-4 py-2 rounded-full hover:cursor-pointer hover:bg-white transition-colors duration-200 hover:text-black">
           <span>{mainItem}</span>
-          <span
-            className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" />
+          <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent h-px " />
         </motion.button>
 
         {/* Mobile Hamburger Button */}
@@ -207,9 +214,11 @@ export const StickyNav = ({
                 setMobileMenuOpen(false);
                 router.push(mainItemLink);
               }}
-              className="mt-8 border-2 border-white text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-white hover:text-black transition-all duration-300"
+              className="relative mt-8 border border-white text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-white hover:text-black transition-all duration-300"
             >
               {mainItem}
+              {/* Border Beam */}
+              <BorderBeam duration={8} size={100} />
             </motion.button>
           </motion.div>
         </motion.div>
