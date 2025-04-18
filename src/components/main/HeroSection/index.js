@@ -6,6 +6,9 @@ import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import logo from "../../../../public/images/common/logo.png";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroSection() {
     const nameRef = useRef(null);
@@ -22,6 +25,15 @@ export default function HeroSection() {
     useEffect(() => {
         // Master timeline for coordinated animations
         const masterTL = gsap.timeline();
+
+        ScrollTrigger.create({
+            trigger: containerRef.current,
+            start: "top top",
+            end: "bottom+=100% top",
+            pin: true,
+            pinSpacing: false,
+            scrub: true,
+        });
 
         // Background fade-in
         masterTL.from(containerRef.current, {

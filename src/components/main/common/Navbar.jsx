@@ -6,7 +6,7 @@ export default function App() {
     const navItems = [
         { key: 1, name: "Home", link: "/" },
         { key: 2, name: "About", link: "/about" },
-        { key: 3, name: "Works", link: "/contact" },
+        { key: 3, name: "Works", link: "/works" },
         { key: 4, name: "Services", link: "/services" },
         { key: 5, name: "Portfolio", link: "/portfolio" },
         { key: 6, name: "Blogs", link: "/blogs" },

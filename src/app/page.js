@@ -3,6 +3,7 @@
 import ParticlesComponent from "@/components/particles";
 import Navbar from "@/components/main/common/Navbar";
 import HeroSection from "@/components/main/HeroSection";
+import AboutSection from "@/components/main/AboutSection";
 
 function App() {
   return (
@@ -19,10 +20,8 @@ function App() {
         <HeroSection />
       </main>
 
-      {/* Demo Next Section */}
-      <div className="h-screen flex items-center justify-center z-10 relative bg-white">
-        <h1 className="text-xl">Hello, World!</h1>
-      </div>
+      {/* About Section */}
+      <AboutSection />
     </div>
   );
 }

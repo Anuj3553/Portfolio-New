@@ -98,7 +98,6 @@ export const StickyNav = ({
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        onClick={() => router.push("/")}
         className={cn(
           "flex w-full max-w-3xl fixed top-6 inset-x-0 mx-auto",
           "border border-white/20 rounded-full",
@@ -116,6 +115,7 @@ export const StickyNav = ({
         <motion.div
           whileHover={{ scale: 1.03 }}
           className="flex items-center space-x-3 cursor-logo"
+          onClick={() => router.push("/")}
         >
           <div className="relative h-10 w-10 rounded-full overflow-hidden border border-white/20">
             <Image
