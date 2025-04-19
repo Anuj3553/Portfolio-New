@@ -12,6 +12,7 @@ import PDFModal from "../common/PDFModal";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { TextScramble } from "@/components/ui/text-scramble";
 import { useInView } from "framer-motion";
+import "@/styles/About.css"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -108,7 +109,7 @@ const Index = React.forwardRef(({ className, ...props }, ref) => {
                     <div ref={textRef} className="lg:space-y-4 sm:space-y-2">
                         {isInView && (
                             <>
-                                <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-1 sm:gap-0">
+                                <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-start gap-1 sm:gap-0">
                                     <TextGenerateEffect
                                         className="text-lg md:text-xl text-white/80 leading-relaxed mx-auto lg:mx-0"
                                         duration={1}

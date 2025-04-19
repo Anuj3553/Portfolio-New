@@ -123,7 +123,7 @@ export default function HeroSection() {
             {/* Large Portfolio Text */}
             <h1
                 ref={portfolioRef}
-                className="lg:text-[160px] md:text-[100px] text-[50px] font-[Gothic] font-extrabold tracking-tight z-10 relative text-white mix-blend-difference drop-shadow-[0_5px_5px_rgba(255,255,255,0.4)]"
+                className="hero-text lg:text-[160px] md:text-[100px] text-[50px] font-[Gothic] font-extrabold tracking-tight z-10 relative text-white mix-blend-difference drop-shadow-[0_5px_5px_rgba(255,255,255,0.4)]"
             >
                 {"PORTFOLIO".split("").map((letter, i) => (
                     <span key={i} className="inline-block">

@@ -1,0 +1,4 @@
+.rpv-core__inner-pages, .rpv-core__inner-pages--vertical {
+  display: flex;
+  align-items: center;
+}

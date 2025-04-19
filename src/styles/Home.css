@@ -5,3 +5,9 @@
 .cursor-main {
   cursor: url("/images/cursor/dark/hand.png"), auto !important;
 }
+
+@media (min-width: 1024px) and (max-width: 1036px) {
+  .hero-text{
+    font-size: 130px;
+  }
+}
