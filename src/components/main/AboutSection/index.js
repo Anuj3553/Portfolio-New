@@ -9,6 +9,8 @@ import { IconCloudSec } from "../common/IconCloudSec";
 import { HyperText } from "@/components/ui/hyper-text";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import PDFModal from "../common/PDFModal";
+import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+import { TextScramble } from "@/components/ui/text-scramble";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -95,14 +97,32 @@ const Index = React.forwardRef(({ className, ...props }, ref) => {
             <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-20">
                 {/* Left Content */}
                 <div ref={contentRef} className="text-center lg:text-left space-y-6 flex-1">
-                    <HyperText className="text-4xl sm:text-5xl md:text-6xl font-bold" text="About Me" />
-                    <p className="text-lg md:text-xl text-white/80 leading-relaxed max-w-3xl mx-auto lg:mx-0">
-                        Hi there! I’m <strong>Anuj Verma</strong>, a full-stack software developer who loves crafting fast, scalable, and beautiful web experiences.
-                    </p>
-                    <p className="text-base text-white/70 leading-relaxed">
+                    <HyperText className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mix-blend-difference drop-shadow-[0_1px_2px_rgba(255,255,255,0.4)]" text="About Me" />
+
+                    <div className="flex items-center justify-center lg:justify-start gap-2 pb-[-4px]">
+                        <TextGenerateEffect
+                            className="text-lg md:text-xl text-white/80 leading-relaxed max-w-3xl mx-auto lg:mx-0"
+                            duration={1}
+                            words="Hi there! I’m"
+                        />
+                        <TextGenerateEffect
+                            className="bg-gradient-to-b from-white to-blue-500 text-transparent bg-clip-text"
+                            duration={2.5}
+                            words="Anuj Verma"
+                        />
+                    </div>
+
+                    <TextScramble className="text-base text-white/70 leading-relaxed">
+                        I’m a passionate software engineer with a knack for building innovative solutions. I specialize in creating dynamic web applications and have a strong foundation in full-stack development.
+                    </TextScramble>
+
+                    <TextScramble className="text-base text-white/70 leading-relaxed">
                         Whether it’s real-time features with WebSockets, a cloud-integrated CMS, or a mobile app — I’m always exploring what’s next in tech.
-                    </p>
-                    <p className="text-base text-white/70 leading-relaxed">Curious about my work or just want to chat?</p>
+                    </TextScramble>
+
+                    <TextScramble className="text-base text-white/70 leading-relaxed">
+                        Curious about my work or just want to chat?
+                    </TextScramble>
 
                     <div className="flex flex-wrap justify-center lg:justify-start gap-6 pt-6">
                         <MagneticButton>

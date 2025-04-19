@@ -55,13 +55,13 @@ const PDFModal = ({ isOpen, onClose, file }) => {
                             animate={{ scale: 1, y: 0 }}
                             exit={{ scale: 0.95, y: 20 }}
                             transition={{ duration: 0.2 }}
-                            className="relative bg-black rounded-xl border border-white/20 max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl"
+                            className="relative bg-black rounded-xl border border-white/20 max-w-4xl w-full max-h-[95vh] overflow-hidden shadow-2xl"
                         >
                             {/* PDF Container */}
                             <div className="h-full w-full">
                                 <iframe
                                     src={`${file}#view=fitH`}
-                                    className="w-full h-screen"
+                                    className="w-full h-[95vh]"
                                     frameBorder="0"
                                     allowFullScreen
                                     title="Resume PDF"
