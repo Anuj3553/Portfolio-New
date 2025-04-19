@@ -104,8 +104,8 @@ export const StickyNav = ({
           "bg-black/80 backdrop-blur-md",
           "shadow-lg shadow-black/30",
           "px-6 py-3 items-center justify-between",
-          "z-[1000]",
-          "drop-shadow-[0_0.1px_0.2px_rgba(255,255,255,0.4)]",
+          "z-[2000]",
+          "hover:drop-shadow-[0_0.1px_0.1px_rgba(255,255,255,0.4)]",
           className
         )}>
         {/* Border Beam */}

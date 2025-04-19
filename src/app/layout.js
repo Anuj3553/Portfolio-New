@@ -30,9 +30,9 @@ export default function RootLayout({ children }) {
         {/* UI Magic */}
         <Globe />
         {/* <SmoothScroll /> */}
-        <TransitionLayout>
-          {children}
-        </TransitionLayout>
+        {/* <TransitionLayout> */}
+        {children}
+        {/* </TransitionLayout> */}
       </body>
     </html>
   );

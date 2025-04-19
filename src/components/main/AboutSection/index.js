@@ -98,37 +98,39 @@ const Index = React.forwardRef(({ className, ...props }, ref) => {
             </div>
 
             {/* Content + IconCloudSec Layout */}
-            <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-20">
+            <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
                 {/* Left Content */}
-                <div ref={contentRef} className="text-center lg:text-left space-y-6 flex-1">
-                    <HyperText className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mix-blend-difference drop-shadow-[0_1px_2px_rgba(255,255,255,0.4)]" text="About Me" />
+                <div ref={contentRef} className="text-center lg:text-left md:space-y-6 sm:space-y-4 flex-1">
+                    <div className="flex items-center justify-center lg:justify-start">
+                        <HyperText className="text-4xl mt-6 sm:text-center sm:text-5xl md:text-6xl font-bold text-white mix-blend-difference drop-shadow-[0_1px_2px_rgba(255,255,255,0.4)]" text="About Me" />
+                    </div>
 
-                    <div ref={textRef} className="space-y-4">
+                    <div ref={textRef} className="lg:space-y-4 sm:space-y-2">
                         {isInView && (
                             <>
-                                <div className="flex items-center justify-center lg:justify-start gap-2">
+                                <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-1 sm:gap-0">
                                     <TextGenerateEffect
-                                        className="text-lg md:text-xl text-white/80 leading-relaxed max-w-3xl mx-auto lg:mx-0"
+                                        className="text-lg md:text-xl text-white/80 leading-relaxed mx-auto lg:mx-0"
                                         duration={1}
                                         words="Hi there! I’m"
                                     />
                                     <TextGenerateEffect
-                                        className="bg-gradient-to-b from-white to-blue-500 text-transparent bg-clip-text"
-                                        duration={2.5}
+                                        className="bg-gradient-to-b from-white to-blue-500 text-transparent bg-clip-text lg:ml-0.5"
+                                        duration={1.7}
                                         words="Anuj Verma"
                                     />
                                 </div>
 
                                 <div className="space-y-8">
-                                    <TextScramble duration={1.5} className="text-base text-white/70 leading-relaxed">
+                                    <TextScramble duration={1.2} className="text-base text-white/70 leading-relaxed">
                                         I’m a passionate software engineer with a knack for building innovative solutions. I specialize in creating dynamic web applications and have a strong foundation in full-stack development.
                                     </TextScramble>
 
-                                    <TextScramble duration={1.5} className="text-base text-white/70 leading-relaxed">
+                                    <TextScramble duration={1.2} className="text-base text-white/70 leading-relaxed">
                                         Whether it’s real-time features with WebSockets, a cloud-integrated CMS, or a mobile app — I’m always exploring what’s next in tech.
                                     </TextScramble>
 
-                                    <TextScramble duration={1.5} className="text-base text-white/70 leading-relaxed">
+                                    <TextScramble duration={1.2} className="text-[15px] leading-relaxed bg-gradient-to-b from-white to-purple-500 text-transparent bg-clip-text">
                                         Curious about my work or just want to chat?
                                     </TextScramble>
                                 </div>
@@ -136,8 +138,8 @@ const Index = React.forwardRef(({ className, ...props }, ref) => {
                         )}
                     </div>
 
-                    <div className="flex flex-wrap justify-center lg:justify-start gap-6 pt-6">
-                        <MagneticButton>
+                    {isInView && (
+                        <div className="flex flex-wrap justify-center lg:justify-start gap-6 pt-6">
                             <motion.a
                                 onClick={() => setIsModalOpen(true)}
                                 className="px-6 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-medium shadow-md hover:shadow-blue-500/30 transition-all duration-300"
@@ -146,9 +148,7 @@ const Index = React.forwardRef(({ className, ...props }, ref) => {
                             >
                                 View Resume
                             </motion.a>
-                        </MagneticButton>
 
-                        <MagneticButton>
                             <motion.a
                                 href="#contact"
                                 className="px-6 py-3 rounded-full border border-white/20 text-white font-medium hover:bg-white/10 transition-all duration-300"
@@ -157,8 +157,9 @@ const Index = React.forwardRef(({ className, ...props }, ref) => {
                             >
                                 Let&apos;s Connect
                             </motion.a>
-                        </MagneticButton>
-                    </div>
+                        </div>
+                    )}
+
                 </div>
 
                 {/* Right: Icon Cloud */}
