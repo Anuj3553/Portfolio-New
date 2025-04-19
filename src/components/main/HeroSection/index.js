@@ -71,7 +71,7 @@ export default function HeroSection() {
             opacity: 1,
             y: 0,
             rotation: -15,
-            duration: 0.6,
+            duration: 2,
             ease: "back.out(1.7)",
             stagger: 0.08
         }, 1);
