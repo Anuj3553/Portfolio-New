@@ -1,4 +1,7 @@
-.rpv-core__inner-pages, .rpv-core__inner-pages--vertical {
-  display: flex;
-  align-items: center;
-}
+/* @media (max-width: 1024px) {
+  .rpv-core__inner-pages,
+  .rpv-core__inner-pages--vertical {
+    display: flex;
+    align-items: center;
+  }
+} */
